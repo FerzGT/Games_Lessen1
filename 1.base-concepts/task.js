@@ -19,7 +19,7 @@ function solveEquation(a, b, c) {
 		}
 		break;
 		default:
-			console.log('Дискриминант меньше нуля (нет решенья)');
+			console.log('Дискриминант меньше нуля (нет решения)');
 			break;
 	}
 
@@ -27,5 +27,18 @@ function solveEquation(a, b, c) {
 }
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
-
+	let loanBody = amount - contribution;
+	let percentMonth = (percent / 100) / 12;
+	let monthlyPayment;
+	let debtRepaid;
+	monthlyPayment = loanBody * (percentMonth + (percentMonth / (Math.pow((1 + percentMonth), countMonths) - 1)));
+	debtRepaid = monthlyPayment * countMonths;
+	console.log(`Ввод: ${percent}, ${contribution}, ${amount}, ${countMonths}. Вывод: ${debtRepaid.toFixed(2)}`);
 }
+calculateTotalMortgage(10, 0, 50000, 12);
+calculateTotalMortgage(10, 1000, 50000, 12);
+calculateTotalMortgage(10, 0, 20000, 24);
+calculateTotalMortgage(10, 1000, 20000, 24);
+calculateTotalMortgage(10, 20000, 20000, 24);
+calculateTotalMortgage(10, 0, 10000, 36);
+calculateTotalMortgage(15, 0, 10000, 36);
