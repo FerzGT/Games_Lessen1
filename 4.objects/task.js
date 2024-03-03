@@ -13,7 +13,9 @@ Student.prototype.setSubject = function (subjectName) {
 
 Student.prototype.addMarks = function (...marks) {
   
-      this.marks === undefined ? console.log(`Студент ${this.name} отчислен. Добавление оценок невозможно.`) : this.marks.push(...marks);
+    if (this.marks !== undefined) {
+      this.marks.push(...marks);
+    };
 }
 
 Student.prototype.getAverage = function () {
@@ -24,7 +26,7 @@ Student.prototype.getAverage = function () {
   const sum = this.marks.reduce(function (accumulator, currentValue) {
     return accumulator + currentValue;
   });
-  return +(sum / this.marks.length).toFixed(1);
+  return sum / this.marks.length;
 
 }
 
